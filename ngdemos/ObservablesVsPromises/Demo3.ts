@@ -19,7 +19,8 @@ let observable =  new Observable((observer) => {
 })
 
 
-let subscriptionOne: Subscription = observable.subscribe(v => console.log(v));
+let subscriptionOne: Subscription = observable.subscribe({next: v => console.log(v)});
+
 
 // unlike promises obsrvables can be cancelled
 setTimeout( () => {

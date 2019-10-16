@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title of the document</title>
+</head>
+
+<body>
+    <button>Show</button>
+    <output></output>
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous">
+</script>
+
+<script type="module">
+    import rxjs from 'https://dev.jspm.io/rxjs@6';
+    import operators from 'https://dev.jspm.io/rxjs@6/operators';
+    
+    const { map, debounceTime,flatMap,switchMap,from } = operators;
+    
+    const output = document.querySelector('output');
+    const button = document.querySelector('button');
+         
+    // Demo 8-1 flatMap vs switchMap 
+    // rxjs.fromEvent(button, 'click')
+    // .pipe(
+    //     flatMap(getAlbums)
+    //     //switchMap(getAlbums)
+    // ).subscribe(
+    //     render,
+    //     err => console.error(err)
+    // );
+
+    // function getAlbums() {  
+    //     const userId = Math.round(Math.random() * 10);
+    //     return rxjs.from(
+    //         $.get(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
+    //     );
+    // }
+
+
+    // function render(res) {
+    //     output.innerHTML = "";
+        
+    //     for (const post of res) {
+    //         const article = document.createElement("article");
+    //         const h1 = document.createElement("h1");
+    //         const p = document.createElement("p");
+    //         h1.textContent = post.title;
+    //         p.textContent = `id:${post.id} userId: ${post.userId}`;
+    //         article.appendChild(h1);
+    //         article.appendChild(p);
+    //         output.appendChild(article);
+    //     }
+    // }
+
+    // Demo 8-2 interval observalbe without switchMap 
+    // let obs1 = rxjs.fromEvent(button, 'click');
+    // let obs2 = rxjs.interval(1000);
+
+    // obs1.subscribe( (event) => obs2.subscribe((value) => console.log(value)));
+
+    // Demo 8-3 interval observalbe with switchMap 
+    // let obs1 = rxjs.fromEvent(button, 'click');
+    // let obs2 = rxjs.interval(1000);
+
+    // obs1
+    // .pipe(
+    //     switchMap( (event) => {
+    //         return obs2
+    //     })
+    // )
+    // .subscribe(
+    //     (value) => console.log(value)
+    // );
+    
+    
+</script>
+
+</html>

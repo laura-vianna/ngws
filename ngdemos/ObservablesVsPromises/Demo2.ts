@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 
 // Demo 2: Observables are lazy but promises are not
 // In the example below the promises will fire whereas observables won't 
@@ -21,4 +21,5 @@ const observable = new Observable(observer => {
     console.log("observable Started");
   });
 
-// let subscriptionOne: Subscription = observable.subscribe(v => console.log(v));
+
+// let subscriptionOne: Subscription = observable.subscribe({next: v => console.log(v)});
