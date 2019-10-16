@@ -1,0 +1,1 @@
+// Demonstrate flatMap and switchMap in the index.html file

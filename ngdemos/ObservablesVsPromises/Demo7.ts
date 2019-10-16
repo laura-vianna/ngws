@@ -1,8 +1,8 @@
 // Fake Online REST API for Testing and Prototyping
 // https://jsonplaceholder.typicode.com/
 
-import { Subscription, interval, timer, from, of } from "rxjs";
-import { map, retryWhen, delayWhen, tap } from 'rxjs/operators';
+import { Observable, Subscription, interval, timer, from, of, throwError } from "rxjs";
+import { map, retryWhen, delayWhen, tap, catchError } from 'rxjs/operators';
 // fetch is the default function in node-fetch. Needed since node doesn't support fetch api.
 import fetch from 'node-fetch'
 
@@ -14,13 +14,13 @@ import fetch from 'node-fetch'
 
 // Demo 7-1 - Create an observable from a promise
 // "from" and "of" are examples of creation functions which create an observable. 
-const data = from(fetch('https://jsonplaceholder.typicode.com/todos/1').then(res => res.json()));
-// Subscribe to begin listening for async result
-data.subscribe({
-  next(response) { console.log(response) },
-  error(err) { console.error('Error: ' + err); },
-  complete() { console.log('Completed'); }
-});
+// const data = from(fetch('https://jsonplaceholder.typicode.com/todos/1').then(res => res.json()));
+// // Subscribe to begin listening for async result
+// data.subscribe({
+//   next(response) { console.log(response) },
+//   error(err) { console.error('Error: ' + err); },
+//   complete() { console.log('Completed'); }
+// });
 
 // Demo 7-2 - 'of' creation funtion emits each of its arguments into the stream
 // If we don't use the spread operator then the whole array will be treated as a single input
@@ -62,7 +62,15 @@ data.subscribe({
 // );
 
 // let subscribe: Subscription = source.subscribe(
-//   val => console.log(val),
-//   err => console.log(err),
-//   () => console.log('complete')
-// )
+//   {
+//     next: (val: number) => {
+//       console.log(val)
+//     },
+//     error: (err: any) => {
+//       console.log(err)
+//     },
+//     complete: () => {
+//       console.log('complete');
+//     }
+//   }
+// );

@@ -1,12 +1,9 @@
 import { Observable, Subscription } from "rxjs";
 
-// Avoid Including the whole library as its heavy
-// import * as Rx from 'rxjs';
-
-
-
 // Demo 1: Asynchronous operation using promies.
-// Both behave the same way  
+// Both promises and observables behave the same way 
+
+// Create a promise
 let promise = new Promise ((resolve) => {
     setTimeout(() => {
         resolve(41) 
@@ -26,4 +23,4 @@ const observable = new Observable(observer => {
     console.log("observable Started");
   });
 
-let subscriptionOne: Subscription = observable.subscribe(v => console.log(v));
+let subscriptionOne: Subscription = observable.subscribe({next: v => console.log(v)});
